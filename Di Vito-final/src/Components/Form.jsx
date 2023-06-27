@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-
+import React, { useState , useContext} from "react";
+import { ContextGlobal } from "../Components/utils/global.context";
 
 const Form = () => {
   //Aqui deberan implementar el form completo con sus validaciones
+  const { state } = useContext(ContextGlobal);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -23,7 +24,7 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <div className={state.theme}>
       {errorMessage && <div>{errorMessage}</div>}
       {successMessage && <div>{successMessage}</div>}
       <form onSubmit={handleSubmit}>
